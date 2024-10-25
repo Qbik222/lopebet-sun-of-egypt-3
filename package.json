@@ -10,9 +10,11 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "babelify": "^10.0.0",
     "browser-sync": "^2.26.3",
+    "browserify": "^17.0.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-babel": "^8.0.0",
@@ -24,7 +26,10 @@
     "gulp-newer": "^1.4.0",
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^5.1.0",
-    "gulp-uglify": "^3.0.1"
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
     "del": "^3.0.0",
@@ -32,9 +37,10 @@
     "gulp-notify": "^3.2.0",
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.4.0",
-    "gulp-sourcemaps": "^2.6.4",
+    "howler": "^2.2.4",
     "pump": "^3.0.0",
     "sass": "^1.53.0",
+    "swiper": "^11.1.14",
     "tar": "^6.1.11"
   }
 }

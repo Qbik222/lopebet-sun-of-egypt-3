@@ -23,6 +23,15 @@ $font-perpetua-reg: Perpetua-Regular, sans-serif //400
 .popup2
   top: 30px
 
+.tdsLink
+  width: 100%
+  height: 100%
+  position: fixed
+  top: 0
+  left: 0
+  pointer-events: initial
+  display: none
+
 body
   overscroll-behavior: none
   img
@@ -38,6 +47,7 @@ body
   align-items: center
   justify-content: space-between
   padding: 20px 30px 20px 100px
+  pointer-events: none
   @media screen and (max-width: 1050px)
     background: url("../img/bg-tab.jpg") no-repeat 0 0/cover
   @media screen and (max-width: 600px)
@@ -129,6 +139,10 @@ body
       position: absolute
       top: 0
       left: 0
+      @media screen and (max-width: 600px) and (orientation: portrait)
+        background: url("../img/wheel/wheel-border-mob.png") no-repeat 0 0/contain
+      @media screen and (max-width: 950px) and (max-height: 450px) and (orientation: landscape)
+        background: url("../img/wheel/wheel-border-mob.png") no-repeat 0 0/contain
     &-sectors
       width: 92%
       height: 78%
@@ -136,6 +150,13 @@ body
       position: absolute
       top: 17.5%
       left: 3%
+      @media screen and (max-width: 600px) and (orientation: portrait)
+        background: url("../img/wheel/wheel-sectors-mob.png") no-repeat 0 0/contain
+      @media screen and (max-width: 950px) and (max-height: 450px) and (orientation: landscape)
+        background: url("../img/wheel/wheel-sectors-mob.png") no-repeat 0 0/contain
+
+
+
     &-btn
       position: absolute
       z-index: 2
@@ -146,6 +167,11 @@ body
       height: 320px
       background: url("../img/wheel/wheel-btn.png") no-repeat 0 0/contain
       animation: scaleBtn 2s ease-in-out infinite
+      pointer-events: initial
+      @media screen and (max-width: 600px) and (orientation: portrait)
+        background: url("../img/wheel/wheel-btn-mob.png") no-repeat 0 0/contain
+      @media screen and (max-width: 950px) and (max-height: 450px) and (orientation: landscape)
+        background: url("../img/wheel/wheel-btn-mob.png") no-repeat 0 0/contain
       &:hover
         cursor: pointer
         animation-play-state: paused
@@ -357,6 +383,7 @@ body
     align-items: center
     justify-content: center
     animation: scale 1.7s ease-in-out infinite
+    pointer-events: initial
     &:hover
       cursor: pointer
       animation-play-state: paused

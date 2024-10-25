@@ -16,6 +16,10 @@ let gulp = require('gulp')
 , cleanCSS = require('gulp-clean-css')
 , rename = require('gulp-rename')
 , uglify = require('gulp-uglify')
+, browserify = require('browserify')
+, source = require('vinyl-source-stream')
+, buffer = require('vinyl-buffer')
+, babelify = require('babelify')
 ;
 
  // For Prodaction
@@ -58,20 +62,37 @@ let gulp = require('gulp')
             .pipe(gulp.dest('build'));
     });
 //JS
+
     gulp.task('js', function(){
-        return gulp.src('front/js/*.js')
-            .pipe(plumber({
-                errorHandler: notify.onError()
-            }))
-            .pipe(gulpIf(isDevelopment, sourcemaps.init()))
-            .pipe(babel({
-                presets: ['@babel/env']
-            }))
-            .pipe(concat('main.js'))
-            .pipe(gulpIf(isDevelopment, sourcemaps.write()))
-            .pipe(gulpIf(isProduction, uglify()))
-            .pipe(gulp.dest('build/js'));
+        return browserify({
+            entries: 'front/js/main.js', // Вхідний файл
+            debug: isDevelopment, // Вмикає сорс-мапи у режимі розробки
+            transform: [babelify.configure({ presets: ['@babel/preset-env'] })]
+        })
+            .bundle() // Збирає всі файли
+            .pipe(source('main.js')) // Виводить зібраний файл як звичайний
+            .pipe(buffer()) // Преобразовує стрім в buffer для подальшої обробки
+            .pipe(gulpIf(isDevelopment, sourcemaps.init({ loadMaps: true }))) // Вмикає сорс-мапи
+            .pipe(gulpIf(isProduction, uglify())) // Мініфікує код у продакшн-режимі
+            .pipe(gulpIf(isDevelopment, sourcemaps.write('./'))) // Записує сорс-мапи
+            .pipe(gulp.dest('build/js')); // Виводить у папку build
     });
+
+
+//     gulp.task('js', function(){
+//         return gulp.src('front/js/*.js')
+//             .pipe(plumber({
+//                 errorHandler: notify.onError()
+//             }))
+//             .pipe(gulpIf(isDevelopment, sourcemaps.init()))
+//             .pipe(babel({
+//                 presets: ['@babel/env']
+//             }))
+//             .pipe(concat('main.js'))
+//             .pipe(gulpIf(isDevelopment, sourcemaps.write()))
+//             .pipe(gulpIf(isProduction, uglify()))
+//             .pipe(gulp.dest('build/js'));
+//     });
 //CLEAN
     gulp.task('clean', function(){
         return del('build');
@@ -96,8 +117,15 @@ let gulp = require('gulp')
             .pipe(gulp.dest('build/fonts'));
     });
 
+// COPY MUSIC
+    gulp.task('copyMusic', function(){
+        return gulp.src('front/**/*.mp3', {since: gulp.lastRun('copyMusic')})
+            .pipe(newer(('build/')))
+            .pipe(gulp.dest('build/'));
+    });
+
 //BUILD
-    gulp.task('build', gulp.series('clean', gulp.parallel('pug', 'sass', 'js', 'copyFonts', 'copyImg', 'copyJson')));
+    gulp.task('build', gulp.series('clean', gulp.parallel('pug', 'sass', 'js', 'copyFonts', 'copyImg', 'copyJson', 'copyMusic')));
 //STATIC SERVER
     gulp.task('server', function() {
         browserSync.init({
