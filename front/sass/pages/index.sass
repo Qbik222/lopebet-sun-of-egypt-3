@@ -2,12 +2,14 @@ $blue: #000055
 $white: #ffffff
 $magenta: #FF267E
 $green: #3AFFC3
-$black: #1B1B1F
+$black: #090110
+$gray: #D9D9D9
+$yellow: #F4C30F
 
-$font-suisse-intl-reg: SuisseIntl-Regular, sans-serif
-$font-suisse-intl-bold: SuisseIntl-Bold, sans-serif
-$font-legal: DINPro-CondLight, sans-serif
-$font-riffic-bold: Riffic-Bold, sans-serif
+$font-inter-semib: Inter-SemiBold, sans-serif //600
+$font-inter-reg: Inter-Regular, sans-serif //400
+$font-perpetua-bold: Perpetua-Bold, sans-serif //700
+$font-perpetua-reg: Perpetua-Regular, sans-serif //400
 
 body
   overscroll-behavior: none
@@ -15,53 +17,445 @@ body
     max-width: 100%
     height: auto
 .land
-  height: calc(100% - 83px)
   position: relative
-  &__logo
-    position: absolute
-    top: 0
-    left: 0
-    max-width: 300px
-.footer
-  background: $blue
-  height: 83px
+  height: 100%
+  max-height: 100%
+  overflow: hidden
+  background: url("../img/bg.jpg") no-repeat 0 0/cover
   display: flex
-  padding: 5px 20px 5px 35px
   align-items: center
   justify-content: space-between
-  &__wrap
+  padding: 20px 30px 20px 100px
+  @media screen and (max-width: 1050px)
+    background: url("../img/bg-tab.jpg") no-repeat 0 0/cover
+  @media screen and (max-width: 600px)
+    background: url("../img/bg-mob.jpg") no-repeat 0 0/cover
+  &::before
+    content: ""
+    display: block
+    position: absolute
+    width: 30%
+    height: 100%
+    right: 0
+    top: 0
+    z-index: 0
+    background: url("../img/right-decor.png") repeat 100% 0/cover
+    animation: bgMove 200s linear infinite
+  &__logo
+    max-width: 360px
+    margin: 0 auto
+  &__left
     display: flex
-    align-items: center
+    flex-direction: column
+    align-items: flex-start
+    justify-content: space-between
   &__text
-    color: $white
-    font-family: $font-suisse-intl-reg
-    font-size: 14px
-    line-height: 22px
-    max-width: 975px
-    opacity: .8
-  &__licensed
     display: flex
-    align-items: center
-    gap: 18px
-    margin: 0 35px 0 auto
+    flex-direction: column
+    align-items: flex-start
+    margin-top: 95px
+    &-item
+      font-family: $font-perpetua-reg
+      position: relative
+      &-content
+        position: relative
+        z-index: 2
+        background: linear-gradient(180deg, #C56F0F 0%, #CBA330 14.23%, #FCED45 28.37%, #CBA330 51.37%, #FFE459 68.49%)
+        background-clip: text
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+        text-transform: uppercase
+        font-size: inherit
+      &::before
+        content: attr(data-text)
+        background: linear-gradient(180deg, #FFE459 0%, #CBA330 25%, #FCED45 59%, #CBA330 79%, #C56F0F 100%)
+        background-size: 100% 70%
+        background-clip: text
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+        text-transform: uppercase
+        -webkit-text-stroke: 5px transparent
+        position: absolute
+        font-size: inherit
+        top: 0
+        left: 0
+        z-index: 0
+      &:not(:last-child)
+        &::after
+          content: ""
+          display: block
+          position: absolute
+          left: 0
+          bottom: 0
+          background: linear-gradient(90deg, rgba(209, 172, 51, 0.00) 0%, #D1AC33 50%, rgba(209, 172, 51, 0.00) 100%)
+          width: 100%
+          height: 4px
+      &:nth-child(1)
+        font-size: 298px
+        line-height: 298px
+        margin-bottom: -30px
+        &::after
+          bottom: 45px
+      &:nth-child(2)
+        font-size: 166px
+        &::after
+          bottom: 20px
+      &:nth-child(3)
+        font-size: 136px
+  &__wheel
+    width: 680px
+    height: 820px
+    position: relative
     flex-shrink: 0
-  &__btns
+    z-index: 4
+    &-border
+      width: 100%
+      height: 100%
+      background: url("../img/wheel/wheel-border.png") no-repeat 0 0/contain
+      position: absolute
+      top: 0
+      left: 0
+    &-sectors
+      width: 92%
+      height: 78%
+      background: url("../img/wheel/wheel-sectors.png") no-repeat 0 0/contain
+      position: absolute
+      top: 17.5%
+      left: 3%
+    &-btn
+      position: absolute
+      z-index: 2
+      top: 56%
+      left: 49%
+      transform: translate(-50%, -50%)
+      width: 320px
+      height: 320px
+      background: url("../img/wheel/wheel-btn.png") no-repeat 0 0/contain
+      animation: scaleBtn 2s ease-in-out infinite
+      &:hover
+        cursor: pointer
+        animation-play-state: paused
+  &__right
+    max-width: 415px
+    margin-bottom: -400px
+    z-index: 1
+    flex-shrink: 0
+  &__footer
+    margin-top: 80px
+    max-width: 515px
+
+
+.popup-overlay
+  display: flex
+  z-index: 10
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: rgba($black, .85)
+
+.firstWin
+  &__main
+    padding-bottom: 75px
+
+.secondWin
+  &__main
+    padding-bottom: 55px
+
+
+.firstWin, .secondWin
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  .coin1, .coin2, .coin3, .coin4
+    position: absolute
+    display: block
+    opacity: 0
+    transition: 1.2s ease-in-out
+  .coin1
+    width: 70px
+    height: 80px
+    top: 290px
+    left: 70px
+    background: url("../img/popups/coin1.png") no-repeat 0 0/contain
+  .coin2
+    width: 80px
+    height: 100px
+    top: 0
+    left: -80px
+    background: url("../img/popups/coin2.png") no-repeat 0 0/contain
+  .coin3
+    top: 0
+    right: -130px
+    width: 160px
+    height: 170px
+    background: url("../img/popups/coin3.png") no-repeat 0 0/contain
+  .coin4
+    width: 150px
+    height: 145px
+    z-index: 2
+    bottom: 250px
+    left: -55px
+    background: url("../img/popups/coin4.png") no-repeat 0 0/contain
+  &__pers
+    max-width: 350px
+    position: relative
+    left: 55px
+    img
+      z-index: 1
+      position: relative
+    &::before
+      content: ""
+      display: block
+      width: 750px
+      height: 425px
+      background: url("../img/popups/popup-light.png") no-repeat 0 0/cover
+      position: absolute
+      bottom: 40px
+      left: -245px
+      z-index: 0
+      @media screen and (max-width: 600px)
+        background: url("../img/popups/popup-light-mob.png") no-repeat 0 0/cover
+    &::after
+      content: ""
+      display: block
+      width: 585px
+      height: 400px
+      position: absolute
+      top: 80px
+      right: -40px
+      background: url("../img/popups/popup-decor.png") no-repeat 0 0/cover
+
+  &__buble
+    width: 230px
+    height: 190px
+    position: absolute
+    top: 100px
+    left: -150px
+    background: url("../img/popups/popup-buble.png") no-repeat 0 0/contain
+    padding: 43px 15px 0 0
+    z-index: 1
+    opacity: 0
+    &-text
+      transform: rotate(-12deg)
+      font-family: $font-perpetua-bold
+      font-size: 44px
+      line-height: 32px
+      text-transform: uppercase
+      color: $gray
+      text-shadow: 0px 3.15px 7.875px rgba(41, 8, 36, 0.70)
+      text-align: center
+  &__main
+    width: 540px
+    height: 420px
+    margin-top: -300px
+    background: url("../img/popups/popup-bg.png") no-repeat 0 0/cover
+    background-size: 100% 100%
+    position: relative
+    z-index: 1
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: flex-end
+    &-logo
+      max-width: 220px
+      position: absolute
+      left: 50%
+      top: 0
+      transform: translate(-50%, -25%)
+    &-title
+      font-family: $font-perpetua-bold
+      font-size: 48px
+      color: $yellow
+    &-prize
+      margin: 10px 0 0 30px
+    .secondWin__main-prize
+      display: flex
+      flex-direction: column
+      align-items: center
+    &-prize, .firstWin__main-prize-item, .secondWin__main-prize-item
+      font-family: $font-perpetua-bold
+      position: relative
+      font-size: 108px
+      line-height: 108px
+      max-width: 400px
+      letter-spacing: 0.04em
+      width: fit-content
+      &-item
+        &:nth-child(1)
+          margin-bottom: -20px
+        &:nth-child(2)
+          &::after
+            content: ""
+            display: block
+            position: absolute
+            top: 50%
+            left: 0
+            width: 38px
+            height: 38px
+            background: url("../img/popups/plus.png") no-repeat 0 0/contain
+            transform: translate(-100%, -70%)
+      &-content
+        position: relative
+        z-index: 2
+        background: linear-gradient(180deg, #C56F0F 0%, #CBA330 14.23%, #FCED45 28.37%, #CBA330 51.37%, #FFE459 68.49%)
+        background-clip: text
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+        text-transform: uppercase
+        font-size: inherit
+      &::before
+        content: attr(data-text)
+        background: linear-gradient(180deg, #FFE459 0%, #CBA330 25%, #FCED45 59%, #CBA330 79%, #C56F0F 100%)
+        background-size: 100% 80%
+        background-clip: text
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+        text-transform: uppercase
+        -webkit-text-stroke: 5px transparent
+        position: absolute
+        font-size: inherit
+        top: 0
+        left: 0
+        z-index: 0
+    &-text
+      color: $white
+      font-size: 26px
+      line-height: 32px
+      font-family: $font-inter-reg
+      margin-top: 30px
+  &__btn
+    margin-top: 20px
+    width: 410px
+    height: 107px
+    background: url("../img/popups/popup-btn.png") no-repeat 0 0/cover
+    background-size: 100% 100%
+    font-family: $font-perpetua-bold
+    position: relative
+    font-size: 46px
     display: flex
     align-items: center
-  &__appstore
-    display: block
-    background: url("../img/appleBtn.png") no-repeat 0 0/contain
-    width: 114px
-    height: 38px
-  &__googlePlay
-    display: block
-    background: url("../img/googleBtn.svg") no-repeat 0 0/contain
-    width: 128px
-    height: 38px
-    margin-left: 10px
+    justify-content: center
+    animation: scale 1.7s ease-in-out infinite
+    &:hover
+      cursor: pointer
+      animation-play-state: paused
+    &-content
+      position: relative
+      z-index: 2
+      background: linear-gradient(180deg, #C56F0F 0%, #CBA330 14.23%, #FCED45 28.37%, #CBA330 51.37%, #FFE459 68.49%)
+      background-clip: text
+      -webkit-background-clip: text
+      -webkit-text-fill-color: transparent
+      text-transform: uppercase
+      font-size: inherit
+    &::before, &::after
+      content: attr(data-text)
+      background: linear-gradient(180deg, #FFE459 0%, #CBA330 25%, #FCED45 59%, #CBA330 79%, #C56F0F 100%)
+      background-size: 100% 100%
+      background-clip: text
+      -webkit-background-clip: text
+      -webkit-text-fill-color: transparent
+      text-transform: uppercase
+      -webkit-text-stroke: 1px transparent
+      position: absolute
+      font-size: inherit
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      width: fit-content
+      white-space: nowrap
+      z-index: 1
+    &::after
+      z-index: 0
+      text-shadow: 0px 1.082px 2.704px #290824
 
-.legal
-  font-family: $font-legal
-  font-size: 4.7vw
-  padding: 0 15px
-  text-align: center
+._opacity
+  opacity: 0
+  z-index: -10
+
+._hidden
+  display: none !important
+
+
+@keyframes bgMove
+  0%
+    background-position: 100% 0
+  100%
+    background-position: 100% 20000px
+
+@keyframes scaleBtn
+  0%,100%
+    transform: translate(-50%, -50%) scale(1)
+  50%
+    transform: translate(-50%, -50%) scale(1.1)
+
+@keyframes scale
+  0%,100%
+    transform: scale(1)
+  50%
+    transform: scale(1.1)
+
+@keyframes firstSpin
+  0%
+    transform: rotate(0deg)
+  10%
+    transform: rotate(-20deg)
+  70%
+    transform: rotate(2716deg)
+  80%
+    transform: rotate(2686deg)
+  90%
+    transform: rotate(2706deg)
+  100%
+    transform: rotate(2701deg)
+
+@keyframes secondSpin
+  0%
+    transform: rotate(2701deg)
+  10%
+    transform: rotate(2680deg)
+  70%
+    transform: rotate(4201deg)
+  80%
+    transform: rotate(4171deg)
+  90%
+    transform: rotate(4193deg)
+  100%
+    transform: rotate(4187deg)
+
+@keyframes buble
+  0%
+    opacity: 0
+    transform: rotate(-25deg) translate(-20px, 50px)
+  100%
+    opacity: 1
+    transform: rotate(0)
+
+@keyframes coin
+  0%
+    transform: scale(.4)
+  100%
+    transform: scale(1)
+
+.firstSpin
+  animation: firstSpin 8s ease-in-out
+
+.secondSpin
+  animation: secondSpin 8s ease-in-out
+
+.showBuble
+  animation: buble 1.2s ease-in-out
+  opacity: 1
+
+.coinAnim
+  opacity: 1 !important
+  animation: coin 1.2s ease-in-out
+
+

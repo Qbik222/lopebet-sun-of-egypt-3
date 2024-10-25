@@ -1,31 +1,57 @@
 .land
-    .land__logo
-        img(src="./img/logo.png" alt="favbet")
-    //.land__left
-    //    .land__title До нових висот з бонусом*
-    //    .land__prize 15 000₴
-    //    .land__spins + 300 фрiспiнiв
-    //    .land__btn хапай штурвал
-    //.land__right
-    //    .land__right-pers
-    //        img(src="./img/pers.png" alt="favbet")
-    //    .land__right-plane
-    //        img(src="./img/plane.png" alt="favbet")
-.footer
-    .footer__text  ТОВ «БУКМЕКЕРСЬКА КОМПАНІЯ «ФАВБЕТ». Ліцензія на провадження діяльності з організації та проведення букмекерської діяльності від 28.12.2022, видана згідно з рішенням КРАІЛ № 433 від 13.12.2022 та Ліцензія на провадження діяльності з організації та проведення азартних ігор казино в мережі Інтернет від 20.04.2021, видана згідно з рішенням КРАІЛ № 137 від 05.04.2021, зі змінами.
-    .footer__wrap
-        ul.footer__licensed
-            li.footer__licensed-item
-                img(src="./img/age.svg" alt="favbet")
-            li.footer__licensed-item
-                img(src="./img/applePay.svg" alt="favbet")
-            li.footer__licensed-item
-                img(src="./img/googlePay.svg" alt="favbet")
-            li.footer__licensed-item
-                img(src="./img/visa.svg" alt="favbet")
-            li.footer__licensed-item
-                img(src="./img/mastercard.svg" alt="favbet")
-        .footer__btns
-            a(href="https://apps.apple.com/ua/app/favbet-ua/id1580749519" target="_blank").footer__appstore
-            a(href="https://favbet.ua/minio/android-files/FavbetUA.apk" target="_blank").footer__googlePlay
-.legal УЧАСТЬ В АЗАРТНИХ ІГРАХ МОЖЕ ВИКЛИКАТИ ІГРОВУ ЗАЛЕЖНІСТЬ. ДОТРИМУЙТЕСЯ ПРАВИЛ (ПРИНЦИПІВ) ВІДПОВІДАЛЬНОЇ ГРИ
+    .land__left
+        .land__logo
+            img(src="./img/logo.png" alt="lopebet")
+        .land__text
+            .land__text-item(data-text="spin") #[span.land__text-item-content spin]
+            .land__text-item(data-text="to get") #[span.land__text-item-content to get]
+            .land__text-item(data-text="a bonus") #[span.land__text-item-content a bonus]
+        .land__footer
+            img(src="./img/footer.png" alt="lopebet")
+    .land__wheel
+        .land__wheel-sectors
+        .land__wheel-border
+        .land__wheel-btn
+    .land__right
+        picture
+            source(media="(max-width: 600px)" srcset="./img/pers-mob.png")
+            source(media="(max-width: 1050px)" srcset="./img/pers-tab.png")
+            img(src="./img/pers.png" alt="lopebet")
+    .popup-overlay._opacity
+        .firstWin._opacity
+            .firstWin__pers
+                picture
+                    source(media="(max-width: 600px)" srcset="./img/popups/popup-pers-mob.png")
+                    img(src="./img/popups/popup-pers.png" alt="lopebet")
+                .firstWin__buble
+                    .firstWin__buble-text You're lucky
+            .firstWin__main
+                .firstWin__main-logo
+                    picture
+                        source(media="(max-width: 600px)" srcset="./img/popups/popup-logo-mob.png")
+                        img(src="./img/popups/popup-logo.png" alt="lopebet")
+                .firstWin__main-title You win
+                .firstWin__main-prize(data-text="+700%") #[span.firstWin__main-prize-content +700%]
+                .firstWin__main-text 1 more attempt left
+            .firstWin__btn(data-text="spin more") #[span.firstWin__btn-content spin more]
+        .secondWin._opacity
+            .coin1.coin
+            .coin2.coin
+            .coin3.coin
+            .coin4.coin
+            .secondWin__pers
+                picture
+                    source(media="(max-width: 600px)" srcset="./img/popups/popup-pers-mob.png")
+                    img(src="./img/popups/popup-pers.png" alt="lopebet")
+                .secondWin__buble
+                    .secondWin__buble-text great bonus
+            .secondWin__main
+                .secondWin__main-logo
+                    picture
+                        source(media="(max-width: 600px)" srcset="./img/popups/popup-logo-mob.png")
+                        img(src="./img/popups/popup-logo.png" alt="lopebet")
+                .secondWin__main-title You win
+                .secondWin__main-prize
+                    .secondWin__main-prize-item(data-text="700%") #[span.secondWin__main-prize-content 700%]
+                    .secondWin__main-prize-item(data-text="500FS") #[span.secondWin__main-prize-content 500FS]
+            .secondWin__btn(data-text="spin more") #[span.secondWin__btn-content spin more]
