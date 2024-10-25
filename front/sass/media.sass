@@ -19,9 +19,29 @@
       transform: scale(1.1)
 
 @media screen and (max-width: 1920px) and (max-height: 1000px)
+  .firstWin, .secondWin
+    flex-shrink: 0
+    transform: scale(.9) translate(-50%, -50%)
+    transform-origin: top left
   .land
     &__left, &__wheel
       transform: scale(.9)
+
+@media screen and (max-width: 1920px) and (max-height: 900px)
+  .firstWin, .secondWin
+    transform: scale(.8) translate(-50%, -50%)
+
+@media screen and (max-width: 1920px) and (max-height: 800px)
+  .firstWin, .secondWin
+    transform: scale(.7) translate(-50%, -50%)
+
+@media screen and (max-width: 1920px) and (max-height: 700px)
+  .firstWin, .secondWin
+    transform: scale(.6) translate(-50%, -50%)
+
+@media screen and (max-width: 1920px) and (max-height: 600px)
+  .firstWin, .secondWin
+    transform: scale(.55) translate(-50%, -50%)
 
 @media screen and (max-width: 1750px)
   .land
@@ -268,6 +288,20 @@
           line-height: 61px
 
 @media screen and (max-width: 1050px) and (orientation: portrait)
+  .popup-overlay
+    &::before
+      content: ""
+      display: block
+      width: 280px
+      height: 85px
+      background: url("../img/logo.png") no-repeat 0 0/contain
+      position: absolute
+      top: 20px
+      left: 50%
+      transform: translate(-50%, 0)
+  .firstWin, .secondWin
+    transform: scale(.9) translate(-50%, -50%)
+    transform-origin: left top
   .land
     &__logo
       max-width: 280px
@@ -290,6 +324,9 @@
       margin-left: 180px
 
 @media screen and (max-width: 950px) and (orientation: portrait)
+  .popup-overlay
+    &::before
+      width: 200px
   .land
     &__logo
       max-width: 200px
@@ -312,6 +349,11 @@
       max-width: 320px
 
 @media screen and (max-width: 850px) and (max-height: 1040px) and (orientation: portrait)
+  .firstWin, .secondWin
+    transform: scale(.8) translate(-50%, -50%)
+  .popup-overlay
+    &::before
+      width: 175px
   .land
     &__logo
       max-width: 175px
@@ -343,6 +385,8 @@
       max-width: 285px
 
 @media screen and (max-width: 768px) and (max-height: 910px) and (orientation: portrait)
+  .firstWin, .secondWin
+    transform: scale(.75) translate(-50%, -50%)
   .land
     &__wheel
       transform: scale(.85)
@@ -408,6 +452,20 @@
 // mob
 
 @media screen and (max-width: 600px) and (orientation: portrait)
+  .firstWin, .secondWin
+    transform: scale(.7) translate(-50%, -50%)
+    .coin2
+      left: 20px
+    .coin3
+      right: -40px
+    .coin4
+      width: 160px
+      height: 175px
+      bottom: 80px
+      left: -25px
+  .popup-overlay
+    &::before
+      width: 160px
   .land
     padding: 20px
     &::before
@@ -455,6 +513,11 @@
       right: 15px
 
 @media screen and (max-width: 540px) and (orientation: portrait) and (min-height: 720px) and (min-width: 500px)
+  .firstWin, .secondWin
+    transform: scale(.6) translate(-50%, -50%)
+  .popup-overlay
+    &::before
+      width: 160px
   .land
     &__logo
       max-width: 160px
@@ -481,6 +544,8 @@
       top: 40px
 
 @media screen and (max-width: 430px) and (orientation: portrait) and (max-height: 750px)
+  .firstWin, .secondWin
+    transform: scale(.6) translate(-50%, -50%)
   .land
     &__right
       max-width: 210px
@@ -488,6 +553,8 @@
       right: 25px
 
 @media screen and (max-width: 420px) and (orientation: portrait) and (max-height: 750px)
+  .firstWin, .secondWin
+    transform: scale(.6) translate(-50%, -50%)
   .land
     &__logo
       max-width: 150px
@@ -525,11 +592,15 @@
       top: 80px
 
 @media screen and (max-width: 395px) and (orientation: portrait) and (max-height: 760px)
+  .firstWin, .secondWin
+    transform: scale(.6) translate(-50%, -50%)
   .land
     &__right
       top: 65px
 
 @media screen and (max-width: 395px) and (orientation: portrait) and (max-height: 700px)
+  .firstWin, .secondWin
+    transform: scale(.55) translate(-50%, -50%)
   .land
     &__wheel
       transform: translate(-50%, 0) scale(.87)
@@ -558,6 +629,8 @@
       max-width: 170px
 
 @media screen and (max-width: 375px) and (orientation: portrait) and (max-height: 560px)
+  .firstWin, .secondWin
+    transform: scale(.45) translate(-50%, -46%)
   .land
     &__wheel
       transform: translate(-50%, 0) scale(.7)
@@ -568,17 +641,23 @@
       max-width: 150px
 
 @media screen and (max-width: 370px) and (orientation: portrait)
+  .firstWin, .secondWin
+    transform: scale(.57) translate(-50%, -50%)
   .land
     &__right
       max-width: 220px
       right: 10px
 
 @media screen and (max-width: 360px) and (orientation: portrait) and (max-height: 760px)
+  .firstWin, .secondWin
+    transform: scale(.6) translate(-50%, -50%)
   .land
     &__right
       max-width: 200px
 
 @media screen and (max-width: 360px) and (orientation: portrait) and (max-height: 650px)
+  .firstWin, .secondWin
+    transform: scale(.5) translate(-50%, -50%)
   .land
     &__right
       right: 30px
@@ -615,6 +694,8 @@
       bottom: 100px
 
 @media screen and (max-width: 325px) and (orientation: portrait)
+  .firstWin, .secondWin
+    transform: scale(.5) translate(-50%, -50%)
   .land
     &__logo
       max-width: 128px
@@ -627,6 +708,8 @@
       top: 70px
 
 @media screen and (max-width: 325px) and (orientation: portrait) and (max-height: 570px)
+  .firstWin, .secondWin
+    transform: scale(.45) translate(-50%, -50%)
   .land
     &__wheel
       transform: translate(-50%, 0) scale(.7)
@@ -634,8 +717,185 @@
       right: 10px
       top: 50px
 
-
 @media screen and (max-width: 305px) and (min-height: 750px)
   .land
     &__wheel
       bottom: 100px
+
+// landscape
+
+@media screen and (max-width: 950px) and (max-height: 450px) and (orientation: landscape)
+  .firstWin, .secondWin
+    transform: scale(.4) translate(-50%, -50%)
+  .land
+    padding: 20px 20px 10px 50px
+    &::before
+      width: 50%
+      animation-duration: 300s
+    &__logo
+      max-width: 180px
+      margin: 0
+    &__left
+      z-index: 3
+      transform: scale(1)
+    &__wheel
+      width: 364px
+      height: 440px
+      margin: 0 auto
+      left: 0
+      bottom: 0
+      position: relative
+      transform: scale(.9)
+      transform-origin: center
+      &-btn
+        width: 172px
+        height: 172px
+    &__text
+      margin: 30px auto 0 0
+      transform: scale(1)
+      flex-shrink: 0
+      &-item
+        white-space: nowrap
+        &::before
+          -webkit-text-stroke: 2px transparent
+        &:not(:last-child)
+          &::after
+            height: 1px
+        &:nth-child(1)
+          font-size: 87px
+          line-height: 87px
+          &::after
+            bottom: 19px
+        &:nth-child(2)
+          font-size: 50px
+          line-height: 50px
+          margin-top: 20px
+          &::after
+            bottom: 6px
+        &:nth-child(3)
+          font-size: 41px
+          line-height: 41px
+    &__right
+      max-width: 200px
+      bottom: auto
+      top: 120px
+      right: 15px
+      position: relative
+      margin: 0
+    &__footer
+      transform: scale(1.2)
+      top: 0
+      transform-origin: left bottom
+
+
+@media screen and (max-width: 900px) and (max-height: 450px) and (orientation: landscape)
+  .land
+    &__wheel
+      transform: scale(.8)
+    &__right
+      right: 45px
+    &__footer
+      transform: scale(1.1)
+      flex-shrink: 0
+
+@media screen and (max-width: 800px) and (max-height: 450px) and (orientation: landscape)
+  .land
+    &__footer
+      transform: scale(1.5)
+
+@media screen and (max-width: 730px) and (max-height: 420px) and (orientation: landscape)
+  .land
+    padding-left: 30px
+
+@media screen and (max-width: 700px) and (max-height: 400px) and (orientation: landscape)
+  .land
+    &__wheel
+      transform: scale(.7)
+    &__right
+      right: 70px
+      max-width: 180px
+
+@media screen and (max-width: 950px) and (max-height: 400px) and (orientation: landscape)
+  .firstWin, .secondWin
+    transform: scale(.37) translate(-50%, -50%)
+
+@media screen and (max-width: 600px) and (max-height: 376px) and (orientation: landscape)
+  .land
+    padding: 15px
+    &__left
+      transform: scale(.8)
+    &__wheel
+      margin: -40px 0 0 -70px
+    &__right
+      max-width: 150px
+      right: 70px
+      top: 30px
+
+@media screen and (max-width: 950px) and (max-height: 370px) and (orientation: landscape)
+  .firstWin, .secondWin
+    transform: scale(.33) translate(-50%, -50%)
+
+@media screen and (max-width: 770px) and (max-height: 370px) and (orientation: landscape)
+  .land
+    &__wheel
+      transform: scale(.75)
+      margin-top: -20px
+    &__footer
+      top: -20px
+
+@media screen and (max-width: 750px) and (max-height: 360px) and (orientation: landscape)
+  .land
+    &__right
+      top: 150px
+
+@media screen and (max-width: 650px) and (max-height: 360px) and (orientation: landscape)
+  .land
+    &__left
+      transform: scale(.83)
+    &__wheel
+      margin: -40px 0 0 -40px
+      transform: scale(.73)
+
+@media screen and (max-width: 600px) and (max-height: 360px) and (orientation: landscape)
+  .land
+    padding: 15px
+    &__left
+      transform: scale(.8)
+    &__wheel
+      margin: -40px 0 0 -40px
+      transform: scale(.7)
+    &__right
+      max-width: 150px
+      right: 70px
+      top: 30px
+
+@media screen and (max-width: 950px) and (max-height: 370px) and (orientation: landscape)
+  .firstWin, .secondWin
+    transform: scale(.3) translate(-50%, -50%)
+
+@media screen and (max-width: 810px) and (max-height: 340px) and (orientation: landscape)
+  .land
+    &__wheel
+      transform: scale(.7)
+      margin-top: -30px
+    &__left
+      transform: scale(.8)
+    &__right
+      top: 150px
+
+@media screen and (max-width: 700px) and (max-height: 320px) and (orientation: landscape)
+  .land
+    &__wheel
+      transform: scale(.65)
+      margin: -20px 0 0 -50px
+
+
+@media screen and (max-width: 810px) and (max-height: 305px) and (orientation: landscape)
+  .land
+    &__wheel
+      transform: scale(.65)
+      margin-top: -25px
+    &__left
+      transform: scale(.75)
+
+

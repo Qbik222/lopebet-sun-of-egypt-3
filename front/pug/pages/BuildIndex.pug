@@ -1,4 +1,6 @@
 .land
+    button.popup1 popup1
+    button.popup2 popup2
     .land__left
         .land__logo
             img(src="./img/logo.png" alt="lopebet")
@@ -16,6 +18,7 @@
         picture
             source(media="(max-width: 600px)" srcset="./img/pers-mob.png")
             source(media="(max-width: 1050px)" srcset="./img/pers-tab.png")
+            source(media="(max-width: 950px) and (max-height: 450px) and (orientation: landscape)" srcset="./img/pers-mob.png")
             img(src="./img/pers.png" alt="lopebet")
     .popup-overlay._opacity
         .firstWin._opacity
@@ -54,4 +57,4 @@
                 .secondWin__main-prize
                     .secondWin__main-prize-item(data-text="700%") #[span.secondWin__main-prize-content 700%]
                     .secondWin__main-prize-item(data-text="500FS") #[span.secondWin__main-prize-content 500FS]
-            .secondWin__btn(data-text="spin more") #[span.secondWin__btn-content spin more]
+            a(href="#").secondWin__btn(data-text="claim bonus") #[span.secondWin__btn-content claim bonus]
